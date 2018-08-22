@@ -8,7 +8,7 @@ int main()
     int b;
     int c;
     cin >> a;
-    b = 6;
+    cin >> b;
     c = a + b;
     cout << c << endl;
     return 0;
