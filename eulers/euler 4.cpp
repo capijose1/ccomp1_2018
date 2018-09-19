@@ -1,53 +1,59 @@
 #include <iostream>
-#include <math.h>
 
 using namespace std;
 
-int palindrom(int num);
 
-int main()
-{
-    auto n1 = 999u;
-    auto n2 = 999u;
-    unsigned int n = 0u;
+bool Palindrome(int producto){
 
-    unsigned int largest = 0;
+	if(producto/100000 < 1){
 
-    for (; n1>=100; n2--)
-    {
-        if (n2 < 100)
-        {
-            n1--;
-            n2 = 999;
-            continue;
-        }
+		int uno = producto%10;
+		int dos = (producto%100 - producto%10)/10;
+		int tres = (producto%1000 - producto%100)/100;
+		int cuatro = (producto%10000 - producto%1000)/1000;
+		int cinco = (producto%100000 - producto%10000)/10000;
 
-        if (palindrom(n1*n2) == n1*n2)
-        {
-            cout << "n1 << " << n1 << " n2 " << n2 << endl;
-            cout << n1*n2;
+		if((uno == cinco) && (dos == cuatro)){
+			return true;
+		}else{
+			return false;
+		}
 
-            if (largest < n1*n2)
-                largest = n1*n2;
-        }
-    }
+	}else{
 
-    cout << "Largest" << largest << endl;
+		int uno = producto%10;
+		int dos = (producto%100 - producto%10)/10;
+		int tres = (producto%1000 - producto%100)/100;
+		int cuatro = (producto%10000 - producto%1000)/1000;
+		int cinco = (producto%100000 - producto%10000)/10000;
+		int seis = (producto%1000000 - producto%100000)/100000;
 
-    return 0;
+		if((uno == seis) && (dos == cinco) && (tres == cuatro)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 
-int palindrom(int num)
-{
-    int new_num = 0;
-    int digit = 0;
 
-    while (num != 0)
-    {
-        digit = num % 10;
-        new_num = new_num*10 + digit;
-        num /= 10;
-    }
+int main(){
+    int a=0;
 
-    return new_num;
+	for(int i = 100; i < 999; i++){
+		for(int j = 100; j < 999; j++){
+
+			int producto = i*j;
+			if(Palindrome(producto)){
+                if (a<producto){
+                    a=producto;
+                }
+
+			}
+
+		}
+	}
+
+cout << a << endl;
+	return 0;
 }

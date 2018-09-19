@@ -1,56 +1,48 @@
 #include <iostream>
-
+#include <math.h>
 using namespace std;
 
+bool isPrime(long n)
+{
+    if (n < 2)
+        return false;
+    if (n == 2)
+        return true;
+    if (n == 3)
+        return true;
+    int k = 3;
+    int z = (int)(sqrt(n) + 1);
 
-bool Palindrome(int producto){
-
-	if(producto/100000 < 1){
-
-		int uno = producto%10;
-		int dos = (producto%100 - producto%10)/10;
-		int tres = (producto%1000 - producto%100)/100;
-		int cuatro = (producto%10000 - producto%1000)/1000;
-		int cinco = (producto%100000 - producto%10000)/10000;
-
-		if((uno == cinco) && (dos == cuatro)){
-			return true;
-		}else{
-			return false;
-		}
-
-	}else{
-
-		int uno = producto%10;
-		int dos = (producto%100 - producto%10)/10;
-		int tres = (producto%1000 - producto%100)/100;
-		int cuatro = (producto%10000 - producto%1000)/1000;
-		int cinco = (producto%100000 - producto%10000)/10000;
-		int seis = (producto%1000000 - producto%100000)/100000;
-
-		if((uno == seis) && (dos == cinco) && (tres == cuatro)){
-			return true;
-		}else{
-			return false;
-		}
-	}
+    if (n % 2 == 0)
+        return false;
+    while (n % k != 0)
+    {
+        k += 2;
+        if (k >= z)
+            return true;
+    }
+    return false;
 }
 
+long primeSumBelow(long x)
+{
+    long long total = 0;
+    for (int i = 0; i < x; i++)
+    {
+        if (isPrime(i) == true)
+            total += i;
+        if (isPrime(i) == false)
+            total += 0;
+    }
+    cout << "fd" << endl;
+    return total;
+}
 
-int main(){
-    int a=0;
+int main()
+{
+    cout << primeSumBelow(20) << endl;
+    cout << primeSumBelow(2000000) << endl;
 
-	for(int i = 100; i < 999; i++){
-		for(int j = 100; j < 999; j++){
-
-			int producto = i*j;
-			if(Palindrome(producto)){
-				cout << producto << endl;
-			}
-
-		}
-	}
-
-
-	return 0;
+    system("pause");
+    return 0;
 }
