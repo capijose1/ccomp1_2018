@@ -11,7 +11,7 @@ bool isPrime(long n)
     if (n == 3)
         return true;
     int k = 3;
-    int z = (int)(sqrt(n) + 1);
+    int z = (int)(sqrt(n));
     if (n % 2 == 0)
         return false;
     while ((n%k)!= 0)
@@ -27,7 +27,7 @@ bool isPrime(long n)
 int main()
 {
     int c[]={1,2,3,4,5,6,7,17},num=0;
-    int n = sizeof(c)/sizeof(int);//devuelve su tamaño en bytes que es el mismo tipo con el que trabaja int
+    int n =  sizeof(c)/sizeof(int);//devuelve su tamaño en bytes que es el mismo tipo con el que trabaja int
     for (int i=0;i<n ;i++){
         if (true==isPrime(c[i])){
             num++;
